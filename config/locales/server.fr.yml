@@ -1,0 +1,10 @@
+fr:
+  site_settings:
+    centrifugo_bridge_enabled: "Publier les événements Discourse vers Centrifugo"
+    centrifugo_bridge_api_url: "URL de base de l'API HTTP Centrifugo (par ex. http://127.0.0.1:8000/api)"
+    centrifugo_bridge_api_key: "Clé API Centrifugo"
+    centrifugo_bridge_channel_prefix: "Préfixe de canal pour les canaux de chat publics (canal résultant : préfixe + id du canal de chat)"
+    centrifugo_bridge_private_channel_prefix: "Préfixe de canal pour les canaux de chat privés et les messages directs (canal résultant : préfixe + id du canal de chat)"
+    centrifugo_bridge_notifications_enabled: "Publier les signaux de notification vers les canaux utilisateur Centrifugo"
+    centrifugo_bridge_notification_channel_prefix: "Préfixe du canal utilisateur pour les notifications et les révocations d'adhésion (canal résultant : préfixe + # + id utilisateur Discourse)"
+    centrifugo_bridge_notification_types: "Types de notifications à publier (vide = tous). Utilisez les clés Notification.types, par ex. mentioned|replied|chat_mention"

@@ -2,7 +2,7 @@
 
 # name: discourse-centrifugo-bridge
 # about: Publishes Discourse Chat events and notifications to Centrifugo
-# version: 0.3.0
+# version: 0.3.1
 # authors: DrNix
 # required_version: 3.3.0
 
