@@ -1,0 +1,28 @@
+plugins:
+  centrifugo_bridge_enabled:
+    default: false
+    client: false
+  centrifugo_bridge_api_url:
+    default: "http://127.0.0.1:8000/api"
+    client: false
+  centrifugo_bridge_api_key:
+    default: ""
+    secret: true
+    client: false
+  centrifugo_bridge_channel_prefix:
+    default: "chat:"
+    client: false
+  centrifugo_bridge_private_channel_prefix:
+    default: "chatp:"
+    client: false
+  centrifugo_bridge_notifications_enabled:
+    default: false
+    client: false
+  centrifugo_bridge_notification_channel_prefix:
+    default: "notify:"
+    client: false
+  centrifugo_bridge_notification_types:
+    default: ""
+    type: list
+    list_type: simple
+    client: false
