@@ -74,11 +74,10 @@ calls `publish_notifications_state`. A client that refreshes the list in respons
 is only a safety net: without `silent=true` the `seen_notification_id` changes, so a new
 signal is still emitted.
 
-## Install
 
-Put into `plugins/`, rebuild, then in Admin → Settings → plugins set
-`centrifugo_bridge_api_url`, `centrifugo_bridge_api_key`, the channel prefixes,
-and enable `centrifugo_bridge_enabled`.
+## Installation
+
+Follow the [plugin installation guide](https://meta.discourse.org/t/install-a-plugin/19157).
 
 ## Centrifugo side
 
