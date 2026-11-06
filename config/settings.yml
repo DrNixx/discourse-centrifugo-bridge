@@ -15,6 +15,9 @@ plugins:
   centrifugo_bridge_private_channel_prefix:
     default: "chatp:"
     client: false
+  centrifugo_bridge_chat_read_state_enabled:
+    default: false
+    client: false
   centrifugo_bridge_notifications_enabled:
     default: false
     client: false

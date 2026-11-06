@@ -5,6 +5,7 @@ zh_CN:
     centrifugo_bridge_api_key: "Centrifugo API 密钥"
     centrifugo_bridge_channel_prefix: "公共聊天频道的前缀（最终频道：前缀 + 聊天频道 ID）"
     centrifugo_bridge_private_channel_prefix: "私密聊天频道和私信的前缀（最终频道：前缀 + 聊天频道 ID）"
+    centrifugo_bridge_chat_read_state_enabled: "将聊天已读状态（最后阅读的消息）事件发布到 Centrifugo 用户频道"
     centrifugo_bridge_notifications_enabled: "将通知信号发布到 Centrifugo 用户频道"
     centrifugo_bridge_notification_channel_prefix: "通知和成员资格撤销的用户频道前缀（最终频道：前缀 + # + Discourse 用户 ID）"
     centrifugo_bridge_notification_types: "要发布的通知类型（留空 = 全部）。使用 Notification.types 键，例如 mentioned|replied|chat_mention"

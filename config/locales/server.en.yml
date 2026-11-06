@@ -5,6 +5,7 @@ en:
     centrifugo_bridge_api_key: "Centrifugo HTTP API key"
     centrifugo_bridge_channel_prefix: "Channel prefix for public chat channels (resulting channel: prefix + chat channel id)"
     centrifugo_bridge_private_channel_prefix: "Channel prefix for private chat channels and DMs (resulting channel: prefix + chat channel id)"
+    centrifugo_bridge_chat_read_state_enabled: "Publish chat read-state (last read message) events to Centrifugo user channels"
     centrifugo_bridge_notifications_enabled: "Publish notification signals to Centrifugo user channels"
     centrifugo_bridge_notification_channel_prefix: "User-channel prefix for notifications and membership revocations (resulting channel: prefix + # + Discourse user id)"
     centrifugo_bridge_notification_types: "Notification types to publish (empty = all). Use Notification.types keys, e.g. mentioned|replied|chat_mention"

@@ -5,6 +5,7 @@ ru:
     centrifugo_bridge_api_key: "API-ключ Centrifugo"
     centrifugo_bridge_channel_prefix: "Префикс канала для публичных чат-каналов (итоговый канал: префикс + id чат-канала)"
     centrifugo_bridge_private_channel_prefix: "Префикс канала для приватных чат-каналов и личных сообщений (итоговый канал: префикс + id чат-канала)"
+    centrifugo_bridge_chat_read_state_enabled: "Публиковать события состояния прочтения чата (последнее прочитанное сообщение) в пользовательские каналы Centrifugo"
     centrifugo_bridge_notifications_enabled: "Публиковать сигналы уведомлений в пользовательские каналы Centrifugo"
     centrifugo_bridge_notification_channel_prefix: "Префикс пользовательского канала для уведомлений и отзыва членства (итоговый канал: префикс + # + id пользователя Discourse)"
     centrifugo_bridge_notification_types: "Типы уведомлений для публикации (пусто = все). Используйте ключи Notification.types, например mentioned|replied|chat_mention"
