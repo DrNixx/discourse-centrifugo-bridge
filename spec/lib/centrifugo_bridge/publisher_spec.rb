@@ -280,4 +280,15 @@ RSpec.describe CentrifugoBridge::Publisher do
       )
     end
   end
+
+  describe ".chat_read_state_payload" do
+    it "wraps the states with a type and timestamp" do
+      states = [{ channel_id: 2, thread_id: nil, last_read_message_id: 11 }]
+
+      payload = described_class.chat_read_state_payload(states)
+
+      expect(payload).to include(type: "chat_read_state", states: states)
+      expect(payload[:ts]).to be_a(Float)
+    end
+  end
 end

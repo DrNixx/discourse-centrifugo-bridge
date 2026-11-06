@@ -2,7 +2,7 @@
 
 # name: discourse-centrifugo-bridge
 # about: Publishes Discourse Chat events and notifications to Centrifugo
-# version: 0.3.1
+# version: 0.4.0
 # authors: DrNix
 # required_version: 3.3.0
 
@@ -19,12 +19,15 @@ require_relative "lib/centrifugo_bridge/notification_state_hook"
 require_relative "lib/centrifugo_bridge/user_chat_channel_membership_extension"
 require_relative "lib/centrifugo_bridge/reaction_notifier"
 require_relative "lib/centrifugo_bridge/message_reactor_extension"
+require_relative "lib/centrifugo_bridge/chat_read_state_batcher"
+require_relative "lib/centrifugo_bridge/chat_read_state_extension"
 
 after_initialize do
   require_relative "app/jobs/regular/publish_to_centrifugo"
   require_relative "app/jobs/regular/publish_centrifugo_event"
   require_relative "app/jobs/regular/publish_notifications_state"
   require_relative "app/jobs/regular/publish_chat_messages_deleted"
+  require_relative "app/jobs/regular/publish_chat_read_state"
 
   # Chat events. Argument lists differ between Discourse versions,
   # so take *args and read the message / channel defensively.
@@ -81,6 +84,12 @@ after_initialize do
 
   if defined?(::Chat::MessageReactor)
     reloadable_patch { ::Chat::MessageReactor.prepend(CentrifugoBridge::MessageReactorExtension) }
+  end
+
+  if defined?(::Chat::Publisher)
+    reloadable_patch do
+      ::Chat::Publisher.singleton_class.prepend(CentrifugoBridge::ChatReadStateExtension)
+    end
   end
 
   reloadable_patch { ::User.prepend(CentrifugoBridge::NotificationStateHook) }

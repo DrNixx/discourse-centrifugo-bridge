@@ -175,6 +175,14 @@ module ::CentrifugoBridge
       }
     end
 
+    def self.chat_read_state_payload(states)
+      {
+        type: "chat_read_state",
+        states: states,
+        ts: Time.now.to_f,
+      }
+    end
+
     def self.publish(channel:, data:)
       uri = URI.parse("#{SiteSetting.centrifugo_bridge_api_url.chomp("/")}/publish")
       http = Net::HTTP.new(uri.host, uri.port)

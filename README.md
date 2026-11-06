@@ -11,6 +11,7 @@ Publishes Discourse Chat events and notifications to Centrifugo.
 | Notification | `notify:#<user_id>` | `{"type":"notification_created","id":<notification_id>}` |
 | Notification state changed | `notify:#<user_id>` | `{"type":"notifications_changed","unread_notifications":<n>,"seen_notification_id":<id>}` |
 | Membership revoked | `notify:#<user_id>` | `{"type":"membership_revoked","channel_id":<chat_channel_id>}` |
+| Chat read state | `notify:#<user_id>` | `{"type":"chat_read_state","states":[{"channel_id":<id>,"thread_id":<id|null>,"last_read_message_id":<id>,"unread_count":<n>,"mention_count":<n>,"watched_threads_unread_count":<n>,"last_reply_created_at":"...","thread_tracking":{...}}],"ts":<float>}` |
 | Reaction added/removed | `chat:<chat_channel_id>` / `chatp:<chat_channel_id>` | `{"type":"reaction","action":"add\|remove","message_id":<id>,"channel_id":<id>,"thread_id":<id\|null>,"user_id":<id>,"username":"...","emoji":"...","ts":<float>}` |
 
 Public and private chat prefixes are configurable with `centrifugo_bridge_channel_prefix`
@@ -43,6 +44,19 @@ the core MessageBus reaction event. `user_id`/`username` is the user who added o
 the reaction. The event is a delta: apply it by `(message_id, user_id, emoji)`. Reactions
 are not coalesced; rapid toggling produces one event per action. For thread replies the
 event goes to the channel and carries `thread_id`.
+
+### Chat read state
+
+Enabled with `centrifugo_bridge_chat_read_state_enabled` (disabled by default). Publishes the
+user's last-read positions to `notify:#<user_id>` and never to chat channels. A single event
+may contain several `states`; each has `channel_id`, `thread_id`, `last_read_message_id`,
+`unread_count`, `mention_count`, `watched_threads_unread_count`, `last_reply_created_at`,
+and `thread_tracking` for thread reads. Updates are coalesced per user with a Redis hash
+(latest `message_id` wins) and a one-second window; the job reads the tracking state at
+execution time.
+
+Centrifugo does not replay missed publishes. On the first connection the client should fetch
+the current read state from the Discourse API; the event keeps it up to date afterwards.
 
 ## Notifications
 
